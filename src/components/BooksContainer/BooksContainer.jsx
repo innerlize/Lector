@@ -1,9 +1,6 @@
 import React from 'react';
 import { useFetch } from '../../hooks/useFetch.js';
-import {
-	LoadingComponent,
-	ErrorComponent
-} from '../FetchStatusComponents/FetchStatusComponents.jsx';
+import { Loading, Error } from '../@FetchComponents/Index.jsx';
 import Book from './Book/Book.jsx';
 
 const BooksContainer = () => {
@@ -11,9 +8,9 @@ const BooksContainer = () => {
 
 	return (
 		<div>
-			{loading && <LoadingComponent />}
+			{loading && <Loading />}
 
-			{error && <ErrorComponent error={error} />}
+			{error && <Error error={error} />}
 
 			{books?.map(book => {
 				return <Book key={book.id} book={book} />;
