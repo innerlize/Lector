@@ -1,8 +1,11 @@
 import React from 'react';
-import UpdateBookForm from '../components/UpdateBookForm/UpdateBookForm';
+import FormContainer from '../components/FormContainer/FormContainer';
+import { useLocation } from 'react-router-dom';
 
 const Update = () => {
-	return <UpdateBookForm />;
+	const location = useLocation().pathname;
+
+	return <FormContainer location={location} />;
 };
 
 export default Update;
