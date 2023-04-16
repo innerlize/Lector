@@ -1,0 +1,23 @@
+name: Build and Deploy Frontend
+on:
+  push:
+    branches:
+      - 'main'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🧲
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Install Packages 🏗️
+        run: npm install
+
+      - name: Run ESLint 🌀
+        run: npm run eslint
