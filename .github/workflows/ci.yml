@@ -18,10 +18,11 @@ jobs:
       - name: Checkout 🧲
         uses: actions/checkout@v2
 
-      - name: Install Dependencies 🏗️
-        run: |
-          cd backend && npm install
-          cd client && npm install
+      - name: Install Backend Dependencies 🏗️
+        run: cd backend && npm install
+
+      - name: Install Frontend Dependencies 🏗️
+        run: cd client && npm install
 
       - name: Run Linters 🌀
         run: npm run lint
