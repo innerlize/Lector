@@ -22,8 +22,8 @@ jobs:
 
       - name: Install Dependencies 🏗️
         run: |
-          npm install:backend
-          npm install:client
+          npm run install:backend
+          npm run install:client
 
       - name: Run Linters 🌀
         run: npm run lint
