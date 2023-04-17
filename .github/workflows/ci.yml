@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Install Backend Dependencies 👩🏽‍💻
-        run: cd backend && npm install
+        run: cd backend && npm install && npm start
 
       - name: Install Frontend Dependencies 👨🏻‍💻
         run: cd client && npm install
