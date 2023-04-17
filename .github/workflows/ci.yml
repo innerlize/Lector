@@ -17,13 +17,11 @@ jobs:
     steps:
       - name: Checkout 🧲
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
 
       - name: Install Dependencies 🏗️
         run: |
-          npm run install:backend
-          npm run install:client
+          cd backend && npm install
+          cd client && npm install
 
       - name: Run Linters 🌀
         run: npm run lint
