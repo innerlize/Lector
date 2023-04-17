@@ -21,9 +21,9 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
+		"prettier": "prettier --write .",
 		"eslint": "eslint .",
-		"lint:staged": "lint-staged",
-		"prettier": "prettier --write ."
+		"lint:staged": "lint-staged"
 	},
 	"eslintConfig": {
 		"extends": [
