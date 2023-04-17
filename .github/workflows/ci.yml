@@ -19,5 +19,5 @@ jobs:
       - name: Install Packages 🏗️
         run: npm install
 
-      - name: Run ESLint 🌀
-        run: npm run eslint
+      - name: Run Linters 🌀
+        run: npm run lint
