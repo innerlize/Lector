@@ -7,8 +7,8 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"prepare": "husky install",
 		"lint": "npm-run-all lint:backend lint:client",
-		"lint:backend": "cd backend && npm run prettier && npm run eslint && npm run lint:staged",
-		"lint:client": "cd client && npm run prettier && npm run eslint && npm run lint:staged"
+		"lint:backend": "cd backend && npm run eslint && npm run lint:staged",
+		"lint:client": "cd client && npm run eslint && npm run lint:staged"
 	},
 	"repository": {
 		"type": "git",
