@@ -6,8 +6,15 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "nodemon index.js",
-		"eslint": "eslint .",
 		"lint:staged": "lint-staged"
+	},
+	"lint-staged": {
+		"src/**/*.+(ts)": [
+			"eslint --fix"
+		],
+		"src/**/*.{ts,json,md}": [
+			"prettier --write"
+		]
 	},
 	"keywords": [],
 	"author": "",

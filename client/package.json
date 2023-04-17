@@ -21,8 +21,16 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"eslint": "eslint .",
 		"lint:staged": "lint-staged"
+	},
+	"lint-staged": {
+		"src/**/*.+(ts|tsx)": [
+			"eslint --fix"
+		],
+		"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+			"prettier --write"
+		],
+		"*.js": "eslint --cache --fix"
 	},
 	"eslintConfig": {
 		"extends": [
