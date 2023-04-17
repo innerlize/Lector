@@ -18,10 +18,13 @@ jobs:
       - name: Checkout 🧲
         uses: actions/checkout@v2
 
-      - name: Install Backend Dependencies 🏗️
+      - name: Install Root Dependencies 🌱
+        run: npm install
+
+      - name: Install Backend Dependencies 👩🏽‍💻
         run: cd backend && npm install
 
-      - name: Install Frontend Dependencies 🏗️
+      - name: Install Frontend Dependencies 👨🏻‍💻
         run: cd client && npm install
 
       - name: Run Linters 🌀
