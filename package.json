@@ -22,6 +22,7 @@
 	},
 	"homepage": "https://github.com/tiltedveggie/Lector#readme",
 	"devDependencies": {
-		"husky": "^8.0.3"
+		"husky": "^8.0.3",
+		"npm-run-all": "^4.1.5"
 	}
 }
