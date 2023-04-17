@@ -1,4 +1,4 @@
-name: Linters
+name: Install Dependencies and Run Linters
 on:
   push:
     branches:
@@ -13,16 +13,15 @@ permissions:
 
 jobs:
   run-linters:
-    name: Run linters
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
+      - name: Checkout 🧲
+        run: actions/checkout@v2
 
-      - name: Install Dependencies
+      - name: Install Dependencies 🏗️
         run: |
           npm install:backend
           npm install:client
 
-      - name: Run Linters
-        uses: npm run lint
+      - name: Run Linters 🌀
+        run: npm run lint
