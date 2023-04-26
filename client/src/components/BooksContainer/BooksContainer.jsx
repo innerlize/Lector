@@ -5,7 +5,7 @@ import Book from './Book/Book.jsx';
 
 const BooksContainer = () => {
 	const { books, loading, error } = useFetch(
-		process.env.REACT_APP_URL + '/home'
+		'https://lector-api-production.up.railway.app/home'
 	);
 
 	return (
