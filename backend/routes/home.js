@@ -4,7 +4,7 @@ const db = require('../models/books.js');
 const homeRouter = express.Router();
 
 homeRouter.get('/', (req, res) => {
-	const sqlQuery = 'SELECT * FROM lector.books';
+	const sqlQuery = 'SELECT * FROM books';
 
 	db.query(sqlQuery, (err, data) => {
 		if (err) return res.json(err);
