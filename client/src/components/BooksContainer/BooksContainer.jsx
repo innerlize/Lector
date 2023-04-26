@@ -4,7 +4,9 @@ import { Loading, Error } from '../@FetchComponents/Index.jsx';
 import Book from './Book/Book.jsx';
 
 const BooksContainer = () => {
-	const { books, loading, error } = useFetch('http://localhost:8800/home');
+	const { books, loading, error } = useFetch(
+		process.env.REACT_APP_URL + '/home'
+	);
 
 	return (
 		<div className='flex flex-wrap justify-around gap-4 mt-10'>
@@ -12,9 +14,13 @@ const BooksContainer = () => {
 
 			{error && <Error error={error} />}
 
-			{books?.map(book => {
-				return <Book key={book.id} book={book} />;
-			})}
+			{!loading && books.length === 0 ? (
+				<div>There&apos;s not books yet ;/</div>
+			) : (
+				books?.map(book => {
+					return <Book key={book.id} book={book} />;
+				})
+			)}
 		</div>
 	);
 };

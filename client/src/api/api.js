@@ -8,7 +8,7 @@ export const createBook = async (e, httpService, book, navigate) => {
 	e.preventDefault();
 
 	try {
-		await httpService.post('http://localhost:8800/book/add', book);
+		await httpService.post(process.env.REACT_APP_URL + '/book/add', book);
 		navigate('/home');
 	} catch (err) {
 		console.log(err);
@@ -21,7 +21,10 @@ export const updateBook = async (e, httpService, id, book, navigate) => {
 	e.preventDefault();
 
 	try {
-		await httpService.put('http://localhost:8800/book/update/' + id, book);
+		await httpService.put(
+			process.env.REACT_APP_URL + '/book/update/' + id,
+			book
+		);
 		navigate('/home');
 	} catch (err) {
 		console.log(err);
@@ -32,7 +35,7 @@ export const updateBook = async (e, httpService, id, book, navigate) => {
 
 export const deleteBook = async (httpService, id) => {
 	try {
-		await httpService.delete('http://localhost:8800/home/' + id);
+		await httpService.delete(process.env.REACT_APP_URL + '/home/' + id);
 		window.location.reload();
 	} catch (err) {
 		console.log(err);
