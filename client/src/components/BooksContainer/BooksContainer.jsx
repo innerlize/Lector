@@ -9,7 +9,7 @@ const BooksContainer = () => {
 	);
 
 	return (
-		<div className='flex flex-wrap justify-around gap-4 mt-10'>
+		<div className='flex flex-wrap justify-center gap-10 p-8 xl:p-0'>
 			{loading && <Loading />}
 
 			{error && <Error error={error} />}
