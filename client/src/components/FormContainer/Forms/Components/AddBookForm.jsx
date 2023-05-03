@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import { Label, TextInput } from 'flowbite-react';
+import { TextInput } from 'flowbite-react';
 import { handleChange, createBook, handleSubmit } from '../../../../api/api';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+const styles = {
+	textInput: {
+		color: '#000000',
+		fontSize: '16px'
+	}
+};
 
 const AddBookForm = () => {
 	const [book, setBook] = useState({
@@ -15,12 +22,16 @@ const AddBookForm = () => {
 	const navigate = useNavigate();
 
 	return (
-		<form onSubmit={() => handleSubmit(book)}>
-			<div>
-				<div className='mb-2 block'>
-					<Label htmlFor='title' value='Title' />
-				</div>
+		<form
+			className='text-[18px] font-medium text-white bg-blue-700 p-10 rounded-lg md:text-[26px] xl:text-[20px] xl:p-5'
+			onSubmit={() => handleSubmit(book)}>
+			<div className='mb-5'>
+				<label className='mb-2 block' htmlFor='title'>
+					Title
+				</label>
+
 				<TextInput
+					style={styles.textInput}
 					id='title'
 					name='title'
 					placeholder='It Ends With Us'
@@ -37,11 +48,12 @@ const AddBookForm = () => {
 				/>
 			</div>
 
-			<div>
-				<div className='mb-2 block'>
-					<Label htmlFor='description' value='Description' />
-				</div>
+			<div className='mb-5'>
+				<label className='mb-2 block' htmlFor='description'>
+					Description
+				</label>
 				<TextInput
+					style={styles.textInput}
 					id='description'
 					name='description'
 					placeholder="A brave and heartbreaking novel that digs its claws into you and doesn't let go..."
@@ -58,11 +70,13 @@ const AddBookForm = () => {
 				/>
 			</div>
 
-			<div>
-				<div className='mb-2 block'>
-					<Label htmlFor='cover' value='Cover' />
-				</div>
+			<div className='mb-5'>
+				<label className='mb-2 block' htmlFor='cover'>
+					Cover
+				</label>
+
 				<TextInput
+					style={styles.textInput}
 					id='cover'
 					name='cover'
 					placeholder='https://oaklandpostonline.com/wp-content/uploads/2022/06/91OT29EvAXL-597x900.jpg'
@@ -79,11 +93,13 @@ const AddBookForm = () => {
 				/>
 			</div>
 
-			<div>
-				<div className='mb-2 block'>
-					<Label htmlFor='author' value='Author (Optional)' />
-				</div>
+			<div className='mb-5'>
+				<label className='mb-2 block' htmlFor='author'>
+					Author (Optional)
+				</label>
+
 				<TextInput
+					style={styles.textInput}
 					id='author'
 					name='author'
 					placeholder='Colleen Hoover'
@@ -100,7 +116,9 @@ const AddBookForm = () => {
 				/>
 			</div>
 
-			<button onClick={e => createBook(e, axios, book, navigate)}>
+			<button
+				className='block bg-green-500 px-6 py-4 mx-auto mt-7 rounded-lg hover:bg-green-600'
+				onClick={e => createBook(e, axios, book, navigate)}>
 				Add Book
 			</button>
 		</form>

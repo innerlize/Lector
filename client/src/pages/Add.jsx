@@ -5,7 +5,11 @@ import { useLocation } from 'react-router-dom';
 const Add = () => {
 	const location = useLocation().pathname;
 
-	return <FormContainer location={location} />;
+	return (
+		<section className='px-8 md:px-28 xl:px-[15.294vw]'>
+			<FormContainer location={location} />
+		</section>
+	);
 };
 
 export default Add;
