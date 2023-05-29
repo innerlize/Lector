@@ -8,10 +8,7 @@ export const createBook = async (e, httpService, book, navigate) => {
 	e.preventDefault();
 
 	try {
-		await httpService.post(
-			'https://lector-api-production.up.railway.app/book/add',
-			book
-		);
+		await httpService.post(process.env.REACT_APP_API_URL + '/book/add', book);
 		navigate('/home');
 	} catch (err) {
 		console.log(err);
@@ -25,7 +22,7 @@ export const updateBook = async (e, httpService, id, book, navigate) => {
 
 	try {
 		await httpService.put(
-			'https://lector-api-production.up.railway.app/book/update/' + id,
+			process.env.REACT_APP_API_URL + '/book/update/' + id,
 			book
 		);
 		navigate('/home');
@@ -38,9 +35,7 @@ export const updateBook = async (e, httpService, id, book, navigate) => {
 
 export const deleteBook = async (httpService, id) => {
 	try {
-		await httpService.delete(
-			'https://lector-api-production.up.railway.app/home/' + id
-		);
+		await httpService.delete(process.env.REACT_APP_API_URL + '/home/' + id);
 		window.location.reload();
 	} catch (err) {
 		console.log(err);
