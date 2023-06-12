@@ -1,43 +1,37 @@
 const express = require('express');
-const db = require('../models/books.js');
+const Book = require('../models/books.js');
 
 const bookRouter = express.Router();
 
-bookRouter.post('/add', (req, res) => {
-	const sqlQuery =
-		'INSERT INTO books (`title`, `description`, `cover`, `author`) VALUES (?)';
+bookRouter.post('/add', async (req, res) => {
+	const { title, description, cover, author } = req.body;
 
-	const values = [
-		req.body.title,
-		req.body.description,
-		req.body.cover,
-		req.body.author
-	];
+	const newBook = await Book.create({
+		title,
+		description,
+		cover,
+		author
+	});
 
-	db.query(sqlQuery, [values], err => {
-		if (err) return res.json(err);
-
-		return res.send('The book was created succesfully! :D');
+	return res.json({
+		message: 'The book was created succesfully! :D',
+		data: newBook
 	});
 });
 
-bookRouter.put('/update/:id', (req, res) => {
+bookRouter.put('/update/:id', async (req, res) => {
 	const bookId = req.params.id;
 
-	const sqlQuery =
-		'UPDATE books SET `title` = ?, `description`= ?, `cover`= ?, `author`= ? WHERE id = ?';
+	const { title, description, cover, author } = req.body;
 
-	const values = [
-		req.body.title,
-		req.body.description,
-		req.body.cover,
-		req.body.author
-	];
+	const updatedBook = await Book.update(
+		{ title, description, cover, author },
+		{ where: { id: bookId } }
+	);
 
-	db.query(sqlQuery, [...values, bookId], err => {
-		if (err) return res.json(err.message);
-
-		return res.json('Book has been updated succesfully! ;)');
+	return res.json({
+		message: 'Book has been updated succesfully! ;)',
+		data: updatedBook
 	});
 });
 

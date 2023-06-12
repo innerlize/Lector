@@ -1,28 +1,22 @@
 const express = require('express');
-const db = require('../models/books.js');
+const Book = require('../models/books');
 
 const homeRouter = express.Router();
 
-homeRouter.get('/', (req, res) => {
-	const sqlQuery = 'SELECT * FROM books';
+homeRouter.get('/', async (req, res) => {
+	const books = await Book.findAll();
 
-	db.query(sqlQuery, (err, data) => {
-		if (err) return res.json(err);
-
-		return res.json(data);
-	});
+	return res.json(books);
 });
 
-homeRouter.delete('/:id', (req, res) => {
+homeRouter.delete('/:id', async (req, res) => {
 	const bookId = req.params.id;
-	console.log(req.params);
 
-	const sqlQuery = 'DELETE FROM books WHERE id = ?';
+	const deletedBook = await Book.destroy({ where: { id: bookId } });
 
-	db.query(sqlQuery, [bookId], err => {
-		if (err) return res.json(err.message);
-
-		return res.json('Book has been deleted succesfully >;D');
+	return res.json({
+		message: 'Book has been deleted succesfully >;D',
+		data: deletedBook
 	});
 });
 
