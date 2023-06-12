@@ -1,11 +1,42 @@
-const mysql = require('mysql2');
+const { DataTypes } = require('sequelize');
+const db = require('../database');
 
-const db = mysql.createPool({
-	host: process.env.HOST,
-	user: process.env.USER,
-	password: process.env.PASSWORD,
-	port: process.env.DB_PORT,
-	database: process.env.DATABASE
-});
+const Book = db.define(
+	'Books',
 
-module.exports = db;
+	{
+		id: {
+			type: DataTypes.INTEGER,
+			primaryKey: true,
+			autoIncrement: true,
+			unique: true,
+			allowNull: false
+		},
+
+		title: {
+			type: DataTypes.STRING(70),
+			allowNull: false
+		},
+
+		description: {
+			type: DataTypes.STRING(500),
+			allowNull: false
+		},
+
+		cover: {
+			type: DataTypes.STRING(500),
+			allowNull: false
+		},
+
+		author: {
+			type: DataTypes.STRING(70),
+			allowNull: true
+		}
+	},
+
+	{
+		timestamps: false
+	}
+);
+
+module.exports = Book;
